@@ -46,6 +46,9 @@ public:
 
     void toggleLock();
     void takeImage();
+    bool getAutoCapture() const;
+    void setAutoCapture(bool newAutoCapture);
+
 private:
 
     void displayCaptureError(int, QCameraImageCapture::Error, const QString &errorString);
@@ -89,6 +92,7 @@ private:
     bool m_saveImage = false;
     int cameraId;
 
+    bool autoCapture;
     CPCameraInterface* cameraInterface;
 };
 
