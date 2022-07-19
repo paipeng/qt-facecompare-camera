@@ -9,14 +9,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="63"/>
-        <location filename="mainwindow.ui" line="93"/>
-        <location filename="mainwindow.ui" line="114"/>
+        <location filename="mainwindow.ui" line="69"/>
+        <location filename="mainwindow.ui" line="99"/>
+        <location filename="mainwindow.ui" line="120"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="103"/>
+        <location filename="mainwindow.ui" line="109"/>
         <source>camera</source>
         <translation type="unfinished">摄像机</translation>
     </message>
@@ -58,9 +58,19 @@
         <translation type="unfinished">结束</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="199"/>
+        <location filename="mainwindow.cpp" line="201"/>
         <source>face_result</source>
         <translation type="unfinished">年龄:%1,性别:%2,活体:%3, score: %4</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="203"/>
+        <source>male</source>
+        <translation type="unfinished">男</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="203"/>
+        <source>female</source>
+        <translation type="unfinished">女</translation>
     </message>
 </context>
 </TS>
