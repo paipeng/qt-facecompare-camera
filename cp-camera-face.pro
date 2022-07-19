@@ -42,3 +42,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/cp-multi-camera/lib -lcp-multi-camera
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/cp-multi-camera/lib -lcp-multi-camera
 else:unix: LIBS += -L$$PWD/libs/x64/
+
+RESOURCES += \
+    cp-camera-face.qrc
