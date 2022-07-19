@@ -4,10 +4,11 @@ FaceCameraViewfinder::FaceCameraViewfinder(QWidget *parent) : QCameraViewfinder(
 {
 
 }
-void FaceCameraViewfinder::updateData(int decodeState, float score, FaceData *faceData, float fps) {
+void FaceCameraViewfinder::updateData(int decodeState, float score, FaceData *faceData, float fps, QSize previewImageSize) {
     this->decodeState = decodeState;
     this->score = score;
     this->fps = fps;
+    this->previewImageSize = previewImageSize;
     memcpy(&(this->faceData), faceData, sizeof(FaceData));
     this->repaint();
 }
@@ -37,8 +38,10 @@ void FaceCameraViewfinder::paintEvent(QPaintEvent* event) {
     painter.drawText(20,20, fpsStr);
     if (decodeState == 0) {
         // rescale camera-preview-image coordination -> viewfinder cooridnation
-        float scale = this->width()*1.0f/faceData.width;
+        float scale = this->height()*1.0f/this->previewImageSize.height();
+        //qDebug() << "preview image width: " << this->previewImageSize.width() << " view width: " << this->width() << " scale: " << scale;
 
+        //float s =  *1.0 / this->width();
         QRect rect(faceData.faceInfo.faceRect.left * scale,
                    faceData.faceInfo.faceRect.top * scale,
                    (faceData.faceInfo.faceRect.right - faceData.faceInfo.faceRect.left) * scale,

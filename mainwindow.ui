@@ -49,14 +49,20 @@
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QStackedWidget" name="cameraStackedWidget">
+           <property name="maximumSize">
+            <size>
+             <width>640</width>
+             <height>480</height>
+            </size>
+           </property>
            <widget class="QWidget" name="page">
             <widget class="FaceCameraViewfinder" name="cameraViewfinder">
              <property name="geometry">
               <rect>
                <x>3</x>
                <y>0</y>
-               <width>731</width>
-               <height>381</height>
+               <width>640</width>
+               <height>480</height>
               </rect>
              </property>
              <property name="text">
@@ -139,6 +145,7 @@
    <class>FaceCameraViewfinder</class>
    <extends>QLabel</extends>
    <header>facecameraviewfinder.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

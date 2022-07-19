@@ -10,7 +10,7 @@ class FaceCameraViewfinder : public QCameraViewfinder
     Q_OBJECT
 public:
     FaceCameraViewfinder(QWidget *parent = nullptr);
-    void updateData(int decodeState, float score, FaceData *faceData, float fps);
+    void updateData(int decodeState, float score, FaceData *faceData, float fps, QSize previewImageSize);
     FaceData* getFaceData();
     void setText(const QString &text);
 protected:
@@ -20,6 +20,7 @@ private:
     int decodeState;
     float score;
     float fps;
+    QSize previewImageSize;
 };
 
 #endif // FACECAMERAVIEWFINDER_H

@@ -144,6 +144,8 @@ void MainWindow::cameraState(int cameraId, int state) {
 }
 
 void MainWindow::processCapturedImage(int cameraId, const QImage& img) {
+    previewImageSize.setWidth(img.width());
+    previewImageSize.setHeight(img.height());
     timer.start();
     arcFaceEngine.setImage(img);
 }
@@ -192,7 +194,7 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
     qDebug() << "updateFaceDecodeResult: " << decodeState << " score: " << score << " elapsed time: " << t;
 
 
-    ui->cameraViewfinder->updateData(decodeState, score, &(arcFaceEngine.faceData), t==0?0:1000.0f/t);
+    ui->cameraViewfinder->updateData(decodeState, score, &(arcFaceEngine.faceData), t==0?0:1000.0f/t, previewImageSize);
     if (decodeState == 0) {
         FaceData *faceData = ui->cameraViewfinder->getFaceData();
 #if 1

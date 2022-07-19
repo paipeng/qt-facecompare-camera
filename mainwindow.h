@@ -38,5 +38,6 @@ private:
     CPCamera camera;
     ArcFaceEngine arcFaceEngine;
     QElapsedTimer timer;
+    QSize previewImageSize;
 };
 #endif // MAINWINDOW_H
