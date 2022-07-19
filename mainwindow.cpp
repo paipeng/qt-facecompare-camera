@@ -196,7 +196,7 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
     if (decodeState == 0) {
         FaceData *faceData = ui->cameraViewfinder->getFaceData();
 #if 1
-        QString showStr = QString("年龄:%1,性别:%2,活体:%3, score: %4").arg(
+        QString showStr = QString(tr("face_result")).arg(
                     QString::number(faceData->ageInfo.ageArray[0]), QString::number(faceData->genderInfo.genderArray[0]),
                 QString::number(faceData->liveNessInfo.isLive[0]), QString::number(score));
         ui->cameraLabel->setText(showStr);
