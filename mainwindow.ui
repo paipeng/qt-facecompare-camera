@@ -50,7 +50,7 @@
          <item>
           <widget class="QStackedWidget" name="cameraStackedWidget">
            <widget class="QWidget" name="page">
-            <widget class="CPCameraViewfinder" name="cameraViewfinder">
+            <widget class="FaceCameraViewfinder" name="cameraViewfinder">
              <property name="geometry">
               <rect>
                <x>3</x>
@@ -88,7 +88,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="cameraLabel">
            <property name="text">
             <string>TextLabel</string>
            </property>
@@ -136,9 +136,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CPCameraViewfinder</class>
+   <class>FaceCameraViewfinder</class>
    <extends>QLabel</extends>
-   <header>cpcameraviewfinder.h</header>
+   <header>facecameraviewfinder.h</header>
   </customwidget>
  </customwidgets>
  <resources>

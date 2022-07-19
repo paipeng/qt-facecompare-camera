@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "cpcamera.h"
+#include "ArcFaceEngine.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -20,6 +22,7 @@ private slots:
     void startCamera();
     void cameraChanged(int index);
     const QCameraInfo getSelectedCameraInfo(int source);
+    void updateFaceDecodeResult(int decodeState, float score);
 
 private:
     void cameraState(int cameraId, int state) override;
@@ -33,5 +36,7 @@ private:
 private:
     Ui::MainWindow *ui;
     CPCamera camera;
+    ArcFaceEngine arcFaceEngine;
+    QElapsedTimer timer;
 };
 #endif // MAINWINDOW_H

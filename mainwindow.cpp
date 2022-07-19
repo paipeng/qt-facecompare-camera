@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusbar->showMessage(tr("app_info"));
 
     displayCapturedImage(0);
+
+
+    QObject::connect(&arcFaceEngine, &ArcFaceEngine::updateFaceDecodeResult, this, &MainWindow::updateFaceDecodeResult);
+    arcFaceEngine.start();
+    arcFaceEngine.setPriority(QThread::LowestPriority);
+
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +32,53 @@ void MainWindow::initCameras() {
     for (const QCameraInfo &cameraInfo : availableCameras) {
         ui->cameraComboBox->addItem(cameraInfo.description(), index);
         index ++;
+    }
+
+    camera.setAutoCapture(true);
+
+    qDebug() << "App path : " << qApp->applicationDirPath();
+    QString path = qApp->applicationDirPath();
+    path.append("/setting.ini");
+    qDebug() << "setting path: " << path;
+    QSettings settings(path, QSettings::IniFormat);
+    QString appId = settings.value("x64_free/APPID", "XXXXXXXX").toString(); // settings.value() returns QVariant
+    qDebug() << "appId: " << appId;
+
+    QString sdkKey = settings.value("x64_free/SDKKEY", "YYYYYYYY").toString(); // settings.value() returns QVariant
+    qDebug() << "sdkKey: " << sdkKey;
+
+    //arcFaceEngine = new ArcFaceEngine();
+
+    MRESULT faceRes = arcFaceEngine.ActiveSDK((char*)(appId.toStdString().c_str()), (char*)(sdkKey.toStdString().c_str()), NULL);
+    qDebug() << "ActiveSDK: " << faceRes;
+
+    if (faceRes == 0) {
+
+        //获取激活文件信息
+        ASF_ActiveFileInfo activeFileInfo = { 0 };
+        arcFaceEngine.GetActiveFileInfo(activeFileInfo);
+
+        if (faceRes == MOK) {
+            faceRes = arcFaceEngine.InitEngine(ASF_DETECT_MODE_IMAGE);//Image
+            qDebug() << "IMAGE模式下初始化结果: " << faceRes;
+
+            //faceRes = arcFaceEngine->InitEngine(ASF_DETECT_MODE_VIDEO);//Video
+            //qDebug() << "VIDEO模式下初始化结果: " << faceRes;
+        }
+
+        arcFaceEngine.SetLivenessThreshold(0.8f, 0.0f);
+
+        //load QImage and do register this image
+        QImage registeredFaceImage;
+        registeredFaceImage.load("C:/Users/paipeng/Pictures/paipeng2.jpeg");
+        qDebug() << "image: " << registeredFaceImage.width() << "-" << registeredFaceImage.height() << "-" << registeredFaceImage.bitPlaneCount() << " " << registeredFaceImage.byteCount();
+
+        arcFaceEngine.registerFace(registeredFaceImage);
+    } else if (faceRes == 28673) {
+        QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
+    } else {
+        QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
+
     }
 }
 
@@ -90,7 +143,8 @@ void MainWindow::cameraState(int cameraId, int state) {
 }
 
 void MainWindow::processCapturedImage(int cameraId, const QImage& img) {
-
+    timer.start();
+    arcFaceEngine.setImage(img);
 }
 
 void MainWindow::cameraReadyForCapture(int cameraId, bool ready) {
@@ -98,7 +152,10 @@ void MainWindow::cameraReadyForCapture(int cameraId, bool ready) {
 
     if (ready) {
         if (cameraId == 0) {
-            //camera.takeImage();
+            if (camera.getAutoCapture()) {
+                camera.setAutoCapture(false);
+                camera.takeImage();
+            }
         } else {
             if (camera.getAutoCapture()) {
                 camera.setAutoCapture(false);
@@ -124,3 +181,29 @@ void MainWindow::displayCapturedImage(int cameraId) {
         ui->cameraStackedWidget->setCurrentIndex(1);
     }
 }
+
+
+void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
+    Q_UNUSED(decodeState);
+    Q_UNUSED(score);
+    qint64 t = timer.elapsed();
+
+    qDebug() << "updateFaceDecodeResult: " << decodeState << " score: " << score << " elapsed time: " << t;
+
+
+    ui->cameraViewfinder->updateData(decodeState, score, &(arcFaceEngine.faceData), t==0?0:1000.0f/t);
+    if (decodeState == 0) {
+        FaceData *faceData = ui->cameraViewfinder->getFaceData();
+#if 1
+        QString showStr = QString("年龄:%1,性别:%2,活体:%3, score: %4").arg(
+                    QString::number(faceData->ageInfo.ageArray[0]), QString::number(faceData->genderInfo.genderArray[0]),
+                QString::number(faceData->liveNessInfo.isLive[0]), QString::number(score));
+        ui->cameraLabel->setText(showStr);
+#endif
+    } else {
+        ui->cameraLabel->setText(QString("not found -> error"));
+    }
+
+    camera.takeImage();
+}
+
