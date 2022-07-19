@@ -13,7 +13,8 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    ArcFaceEngine.cpp
+    ArcFaceEngine.cpp \
+    facecameraviewfinder.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -21,7 +22,8 @@ HEADERS += \
     cp-multi-camera/include/cpcamera-interface.h \
     cp-multi-camera/include/cpcameraviewfinder.h \
     cp-multi-camera/include/cp-multi-camera_global.h \
-    ArcFaceEngine.h
+    ArcFaceEngine.h \
+    facecameraviewfinder.h
 
 
 FORMS += \
