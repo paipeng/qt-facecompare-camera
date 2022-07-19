@@ -53,7 +53,7 @@ void MainWindow::initCameras() {
     qDebug() << "ActiveSDK: " << faceRes;
 
     if (faceRes == 0) {
-        QMessageBox::information(this, tr("arcsoft_sdk"), tr("arcsoft_sdk_activate_success"), QMessageBox::Ok);
+        //QMessageBox::information(this, tr("arcsoft_sdk"), tr("arcsoft_sdk_activate_success"), QMessageBox::Ok);
 
         //获取激活文件信息
         ASF_ActiveFileInfo activeFileInfo = { 0 };
