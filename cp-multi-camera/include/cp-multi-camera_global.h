@@ -1,0 +1,12 @@
+﻿#ifndef CPMULTICAMERA_GLOBAL_H
+#define CPMULTICAMERA_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(CPMULTICAMERA_LIBRARY)
+#  define CPMULTICAMERA_EXPORT Q_DECL_EXPORT
+#else
+#  define CPMULTICAMERA_EXPORT
+#endif
+
+#endif // CPMULTICAMERA_GLOBAL_H
