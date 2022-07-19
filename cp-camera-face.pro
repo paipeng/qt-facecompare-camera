@@ -72,3 +72,9 @@ win32:CONFIG(debug, debug|release) {
 
 RESOURCES += \
     cp-camera-face.qrc
+
+copydata.commands = $(COPY_DIR) $$shell_path($$PWD/setting.ini) $$shell_path($$OUT_PWD/release) #$$PWD/setting.int $$OUT_PWD/release
+first.depends = $(first) copydata
+export(first.depends)
+export(copydata.commands)
+QMAKE_EXTRA_TARGETS += first copydata
