@@ -443,15 +443,15 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
             if (MOK == ret) {
                 qDebug() << "FacePairMatching: " << confidenceLevel;
             }
-
-            if (faceData.faceFeature.feature != NULL) {
-                free(faceData.faceFeature.feature);
-            }
             if (confidenceLevel > 0.8) {
                 qDebug() << "emit slot -> updateFaceDecodeResult";
                 break;
             }
         }
+    }
+    if (faceData.faceFeature.feature != NULL) {
+        free(faceData.faceFeature.feature);
+        faceData.faceFeature.feature = NULL;
     }
     emit updateFaceDecodeResult(ret, confidenceLevel);
 }
