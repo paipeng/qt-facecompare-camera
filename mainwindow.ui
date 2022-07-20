@@ -115,9 +115,34 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QLabel" name="label_3">
+          <widget class="ClickableLabel" name="registeredFaceLabel">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>240</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
+             <height>240</height>
+            </size>
+           </property>
            <property name="text">
-            <string>TextLabel</string>
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="cp-camera-face.qrc">:/images/FacialDetection/images/FacialDetection.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="registerPushButton">
+           <property name="text">
+            <string>register</string>
            </property>
           </widget>
          </item>
@@ -146,6 +171,11 @@
    <extends>QLabel</extends>
    <header>facecameraviewfinder.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClickableLabel</class>
+   <extends>QLabel</extends>
+   <header>clickablelabel.h</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -184,9 +214,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>registerPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>registerFaceImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>697</x>
+     <y>494</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>startCamera()</slot>
   <slot>cameraChanged(int)</slot>
+  <slot>registerFaceImage()</slot>
  </slots>
 </ui>

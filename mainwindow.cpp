@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     initCameras();
     ui->statusbar->showMessage(tr("app_info"));
 
+    QObject::connect(ui->registeredFaceLabel, SIGNAL(clicked()), this, SLOT(registeredFaceLabelClicked()));
+
     displayCapturedImage(0);
 
 
@@ -68,13 +70,14 @@ void MainWindow::initCameras() {
         }
 
         arcFaceEngine.SetLivenessThreshold(0.8f, 0.0f);
-
+#if 0
         //load QImage and do register this image
         QImage registeredFaceImage;
         registeredFaceImage.load("C:/Users/paipeng/Pictures/paipeng2.jpeg");
         qDebug() << "image: " << registeredFaceImage.width() << "-" << registeredFaceImage.height() << "-" << registeredFaceImage.bitPlaneCount() << " " << registeredFaceImage.byteCount();
 
         arcFaceEngine.registerFace(registeredFaceImage);
+#endif
     } else if (faceRes == 28673) {
         QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
     } else {
@@ -212,3 +215,36 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
     camera.takeImage();
 }
 
+void MainWindow::registeredFaceLabelClicked() {
+    qDebug() << "registeredFaceLabelClicked";
+    QString passPhoto = QFileDialog::getOpenFileName(this,
+        tr("open_image"), "/Users/paipeng/Documents", tr("image_file_format"));
+    qDebug() << "selected file: " << passPhoto;
+
+    setPhotoImage(passPhoto);
+}
+
+void MainWindow::setPhotoImage(const QString & filePath) {
+    int w = ui->registeredFaceLabel->width();
+    int h = ui->registeredFaceLabel->height();
+    QImage passPhotoImage = QImage(filePath);
+
+    if (!passPhotoImage.isNull()) {
+        QPixmap pixmap = QPixmap::fromImage(passPhotoImage);
+        ui->registeredFaceLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+    } else {
+        QImage passphoto = QImage(":/resources/images/FacialDetection.png");
+        QPixmap pixmap = QPixmap::fromImage(passphoto);
+        ui->registeredFaceLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+    }
+}
+
+void MainWindow::registerFaceImage() {
+    qDebug() << "registerFaceImage";
+    const QPixmap* pixmap = ui->registeredFaceLabel->pixmap();
+    if (pixmap) {
+        QImage image(pixmap->toImage());
+        arcFaceEngine.registerFace(image);
+    }
+
+}

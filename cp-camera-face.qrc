@@ -5,4 +5,7 @@
     <qresource prefix="/images/icon">
         <file>images/icon.jpg</file>
     </qresource>
+    <qresource prefix="/images/FacialDetection">
+        <file>images/FacialDetection.png</file>
+    </qresource>
 </RCC>

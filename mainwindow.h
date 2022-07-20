@@ -24,6 +24,9 @@ private slots:
     const QCameraInfo getSelectedCameraInfo(int source);
     void updateFaceDecodeResult(int decodeState, float score);
 
+    void registeredFaceLabelClicked();
+    void registerFaceImage();
+
 private:
     void cameraState(int cameraId, int state) override;
     void processCapturedImage(int cameraId, const QImage& img) override;
@@ -32,7 +35,7 @@ private:
 private:
     void displayViewfinder(int cameraId);
     void displayCapturedImage(int cameraId);
-
+    void setPhotoImage(const QString & filePath);
 private:
     Ui::MainWindow *ui;
     CPCamera camera;

@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     ArcFaceEngine.cpp \
-    facecameraviewfinder.cpp
+    facecameraviewfinder.cpp \
+    clickablelabel.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -23,7 +24,8 @@ HEADERS += \
     cp-multi-camera/include/cpcameraviewfinder.h \
     cp-multi-camera/include/cp-multi-camera_global.h \
     ArcFaceEngine.h \
-    facecameraviewfinder.h
+    facecameraviewfinder.h \
+    clickablelabel.h
 
 
 FORMS += \
