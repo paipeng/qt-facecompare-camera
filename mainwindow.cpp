@@ -286,6 +286,11 @@ void MainWindow::menuHelp() {
 }
 void MainWindow::menuAbout() {
     qDebug() << "menuAbout";
+    QString version(APP_VERSION);
+    QString content =  tr("app_about_content");
+    content.append("\n\nVersion: ");
+    content.append(version);
+    QMessageBox::about(this, tr("menu_about"), content);
 
 }
 
