@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow), camera(0, this)
 {
     ui->setupUi(this);
+    initMenu();
     initCameras();
     ui->statusbar->showMessage(tr("app_info"));
 
@@ -26,6 +27,39 @@ MainWindow::~MainWindow()
 }
 
 
+void MainWindow::initMenu() {
+
+    QMenu* fileMenu;
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addSeparator();
+    QAction *exitAct;
+    exitAct = new QAction(tr("&Exit"), this);
+    exitAct->setShortcuts(QKeySequence::Quit);
+    exitAct->setStatusTip(tr("exit"));
+    connect(exitAct, &QAction::triggered, this, &MainWindow::menuExit);
+    fileMenu->addAction(exitAct);
+
+    QMenu* preferencesMenu = menuBar()->addMenu(tr("&Preferences"));
+    QAction *settingAct = new QAction(tr("&Settings"), this);
+    settingAct->setShortcuts(QKeySequence::Preferences);
+    settingAct->setStatusTip(tr("settings"));
+    connect(settingAct, &QAction::triggered, this, &MainWindow::menuSettings);
+    preferencesMenu->addAction(settingAct);
+
+
+    QMenu* helpMenu = menuBar()->addMenu(tr("&Help"));
+    QAction *helpAct = new QAction(tr("&Help"), this);
+    helpAct->setShortcuts(QKeySequence::HelpContents);
+    helpAct->setStatusTip(tr("help"));
+    connect(helpAct, &QAction::triggered, this, &MainWindow::menuHelp);
+    helpMenu->addAction(helpAct);
+    helpMenu->addSeparator();
+    QAction *aboutAct = new QAction(tr("&About"), this);
+    aboutAct->setShortcuts(QKeySequence::WhatsThis);
+    aboutAct->setStatusTip(tr("about"));
+    connect(aboutAct, &QAction::triggered, this, &MainWindow::menuAbout);
+    helpMenu->addAction(aboutAct);
+}
 void MainWindow::initCameras() {
     qDebug() << "initCameras";
     const QList<QCameraInfo> availableCameras = CPCamera::getAvailableCamersInfos();
@@ -239,4 +273,22 @@ void MainWindow::registerFaceImage() {
         arcFaceEngine.registerFace(image);
     }
 
+}
+
+void MainWindow::menuExit() {
+    qDebug() << "menuExit";
+
+}
+
+void MainWindow::menuHelp() {
+    qDebug() << "menuHelp";
+
+}
+void MainWindow::menuAbout() {
+    qDebug() << "menuAbout";
+
+}
+
+void MainWindow::menuSettings() {
+    qDebug() << "menuSettings";
 }

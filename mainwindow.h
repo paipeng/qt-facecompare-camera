@@ -18,6 +18,7 @@ public:
     ~MainWindow();
 
 private slots:
+    void initMenu();
     void initCameras();
     void startCamera();
     void cameraChanged(int index);
@@ -26,6 +27,12 @@ private slots:
 
     void registeredFaceLabelClicked();
     void registerFaceImage();
+
+    // menu
+    void menuExit();
+    void menuHelp();
+    void menuAbout();
+    void menuSettings();
 
 private:
     void cameraState(int cameraId, int state) override;
@@ -42,5 +49,6 @@ private:
     ArcFaceEngine arcFaceEngine;
     QElapsedTimer timer;
     QSize previewImageSize;
+
 };
 #endif // MAINWINDOW_H
