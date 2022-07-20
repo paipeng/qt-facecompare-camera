@@ -85,7 +85,7 @@ private:
     void run();
     QImage faceImage;
     //FaceData registeredFaceData;
-    QList<FaceData> registeredFaceDataList;
 public:
+    QList<FaceData> registeredFaceDataList;
     FaceData faceData;
 };
