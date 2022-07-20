@@ -50,5 +50,6 @@ private:
     QElapsedTimer timer;
     QSize previewImageSize;
 
+    QList<QLabel*> registeredImageLabeList;
 };
 #endif // MAINWINDOW_H

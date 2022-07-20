@@ -7,6 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow), camera(0, this)
 {
     ui->setupUi(this);
+
+
+    registeredImageLabeList.append(ui->registeredFace1Label);
+    registeredImageLabeList.append(ui->registeredFace2Label);
+    registeredImageLabeList.append(ui->registeredFace3Label);
+    registeredImageLabeList.append(ui->registeredFace4Label);
+    registeredImageLabeList.append(ui->registeredFace5Label);
+    registeredImageLabeList.append(ui->registeredFace6Label);
+
     initMenu();
     initCameras();
     ui->statusbar->showMessage(tr("app_info"));
@@ -274,6 +283,14 @@ void MainWindow::registerFaceImage() {
         int ret = arcFaceEngine.registerFace(image);
         if (ret == 0) {
             ui->statusbar->showMessage(tr("face_registered"));
+            int i = 0;
+            foreach(FaceData faceData, arcFaceEngine.registeredFaceDataList) {
+                int w = registeredImageLabeList.at(i)->width();
+                int h = registeredImageLabeList.at(i)->height();
+                QPixmap pixmap = QPixmap::fromImage(faceData.image);
+                registeredImageLabeList.at(i)->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+                i++;
+            }
         } else {
             QMessageBox::critical(this, tr("face_register"), tr("face_register_failed"), QMessageBox::Ok);
         }
