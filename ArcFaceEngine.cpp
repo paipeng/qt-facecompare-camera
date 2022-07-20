@@ -82,8 +82,10 @@ ArcFaceEngine::~ArcFaceEngine() {
     quit();
     wait();
 
-    if (registeredFaceData.faceFeature.feature != NULL) {
-        free(registeredFaceData.faceFeature.feature);
+    foreach(FaceData registeredFaceData, registeredFaceDataList) {
+        if (registeredFaceData.faceFeature.feature != NULL) {
+            free(registeredFaceData.faceFeature.feature);
+        }
     }
 }
 
@@ -436,23 +438,34 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
     MFloat confidenceLevel = 0;
     if (MOK == ret) {
         // 可以选择比对模型，人证模型推荐阈值：0.82 生活照模型推荐阈值：0.80
-        ret = FacePairMatching(confidenceLevel, faceData.faceFeature, registeredFaceData.faceFeature);
-        if (MOK == ret) {
-            qDebug() << "FacePairMatching: " << confidenceLevel;
-        }
+        foreach(FaceData registeredFaceData, registeredFaceDataList) {
+            ret = FacePairMatching(confidenceLevel, faceData.faceFeature, registeredFaceData.faceFeature);
+            if (MOK == ret) {
+                qDebug() << "FacePairMatching: " << confidenceLevel;
+            }
 
-        if (faceData.faceFeature.feature != NULL) {
-            free(faceData.faceFeature.feature);
+            if (faceData.faceFeature.feature != NULL) {
+                free(faceData.faceFeature.feature);
+            }
+            if (confidenceLevel > 0.8) {
+                qDebug() << "emit slot -> updateFaceDecodeResult";
+                break;
+            }
         }
-        qDebug() << "emit slot -> updateFaceDecodeResult";
     }
     emit updateFaceDecodeResult(ret, confidenceLevel);
 }
 
 int ArcFaceEngine::registerFace(const QImage& image) {
     // convert to opencv image IplImage
+    FaceData registeredFaceData;
     int ret = faceDetect(image, &registeredFaceData);
     qDebug() << "registerFace:" << ret;
+    if (ret == 0) {
+        registeredFaceData.image = image;
+        registeredFaceDataList.append(registeredFaceData);
+    }
+    qDebug() << "registeredFaceDataList size: " << registeredFaceDataList.size();
     return ret;
 }
 
