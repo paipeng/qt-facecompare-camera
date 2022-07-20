@@ -449,9 +449,10 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
     emit updateFaceDecodeResult(ret, confidenceLevel);
 }
 
-void ArcFaceEngine::registerFace(const QImage& image) {
+int ArcFaceEngine::registerFace(const QImage& image) {
     // convert to opencv image IplImage
     int ret = faceDetect(image, &registeredFaceData);
     qDebug() << "registerFace:" << ret;
+    return ret;
 }
 

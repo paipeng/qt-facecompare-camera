@@ -64,7 +64,7 @@ public:
 	//获取版本信息
 	const ASF_VERSION GetVersion();
 
-    void registerFace(const QImage& image);
+    int registerFace(const QImage& image);
 	
 public slots:
     void stop();
