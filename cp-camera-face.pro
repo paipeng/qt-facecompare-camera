@@ -81,6 +81,7 @@ export(first.depends)
 export(copydata.commands)
 QMAKE_EXTRA_TARGETS += first copydata
 
+RC_ICONS = app.ico
 
 VERSION = 1.0.0
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
