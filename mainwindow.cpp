@@ -270,7 +270,12 @@ void MainWindow::registerFaceImage() {
     const QPixmap* pixmap = ui->registeredFaceLabel->pixmap();
     if (pixmap) {
         QImage image(pixmap->toImage());
-        arcFaceEngine.registerFace(image);
+        int ret = arcFaceEngine.registerFace(image);
+        if (ret == 0) {
+            ui->statusbar->showMessage(tr("face_registered"));
+        } else {
+            QMessageBox::critical(this, tr("face_register"), tr("face_register_failed"), QMessageBox::Ok);
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
@@ -87,12 +87,27 @@
         <translation type="unfinished">ARCSOFT SDK</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="290"/>
+        <location filename="mainwindow.cpp" line="275"/>
+        <source>face_registered</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="277"/>
+        <source>face_register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="277"/>
+        <source>face_register_failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="295"/>
         <source>app_about_content</source>
         <translation type="unfinished">CP人脸识别程序（内嵌ArcSoft SDK）</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="293"/>
+        <location filename="mainwindow.cpp" line="298"/>
         <source>menu_about</source>
         <translation type="unfinished">关于</translation>
     </message>
