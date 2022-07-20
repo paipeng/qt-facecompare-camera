@@ -11,6 +11,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    licensedialog.cpp \
     main.cpp \
     mainwindow.cpp \
     ArcFaceEngine.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
     clickablelabel.cpp
 
 HEADERS += \
+    licensedialog.h \
     mainwindow.h \
     cp-multi-camera/include/cpcamera.h \
     cp-multi-camera/include/cpcamera-interface.h \

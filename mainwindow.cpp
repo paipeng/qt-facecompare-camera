@@ -1,5 +1,6 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "licensedialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -301,4 +302,9 @@ void MainWindow::menuAbout() {
 
 void MainWindow::menuSettings() {
     qDebug() << "menuSettings";
+    bool ok;
+    QStringList list = LicenseDialog::getStrings(this, &ok);
+    if (ok) {
+        // use list
+    }
 }
