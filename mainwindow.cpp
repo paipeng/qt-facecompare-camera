@@ -70,14 +70,6 @@ void MainWindow::initCameras() {
         }
 
         arcFaceEngine.SetLivenessThreshold(0.8f, 0.0f);
-#if 0
-        //load QImage and do register this image
-        QImage registeredFaceImage;
-        registeredFaceImage.load("C:/Users/paipeng/Pictures/paipeng2.jpeg");
-        qDebug() << "image: " << registeredFaceImage.width() << "-" << registeredFaceImage.height() << "-" << registeredFaceImage.bitPlaneCount() << " " << registeredFaceImage.byteCount();
-
-        arcFaceEngine.registerFace(registeredFaceImage);
-#endif
     } else if (faceRes == 28673) {
         QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
     } else {
