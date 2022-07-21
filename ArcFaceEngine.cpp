@@ -487,7 +487,7 @@ int ArcFaceEngine::registerFaceData(FaceData *faceData) {
     registeredFaceData.width = faceData->width;
     registeredFaceData.height = faceData->height;
 
-    if (faceData->faceFeature.featureSize > 0 || faceData->faceFeature.feature != NULL) {
+    if (faceData->faceFeature.featureSize > 0 && faceData->faceFeature.feature != NULL) {
         registeredFaceData.faceFeature.featureSize = faceData->faceFeature.featureSize;
         registeredFaceData.faceFeature.feature = (MByte*)malloc(sizeof(char) * registeredFaceData.faceFeature.featureSize);
         memcpy(registeredFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * faceData->faceFeature.featureSize);
