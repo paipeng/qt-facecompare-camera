@@ -252,16 +252,24 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
         int w = ui->detectedFaceLabel->width();
         int h = ui->detectedFaceLabel->height();
 
-        detectedFaceData.image = faceData->image;
-        if (detectedFaceData.faceFeature.featureSize == 0) {
-            if (faceData->faceFeature.featureSize > 0) {
-                detectedFaceData.faceFeature.feature = (MByte*) malloc(sizeof(char) * faceData->faceFeature.featureSize);
-            }
-        }
-        memcpy(detectedFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * detectedFaceData.faceFeature.featureSize);
-
         QPixmap pixmap = QPixmap::fromImage(faceData->image);
         ui->detectedFaceLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+
+        if (faceData->faceFeature.featureSize > 0) {
+            detectedFaceData.image = faceData->image;
+            if (detectedFaceData.faceFeature.feature == NULL) {
+                qDebug() << "malloc feature ";
+                detectedFaceData.faceFeature.feature = (MByte*) malloc(sizeof(char) * faceData->faceFeature.featureSize);
+            }
+            detectedFaceData.faceFeature.featureSize = faceData->faceFeature.featureSize;
+            qDebug() << "faceData->faceFeature.featureSize: " << faceData->faceFeature.featureSize;
+            //memcpy(detectedFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * faceData->faceFeature.featureSize);
+
+            for (int i = 0; i < faceData->faceFeature.featureSize; i++) {
+                detectedFaceData.faceFeature.feature[i] = faceData->faceFeature.feature[i];
+            }
+        }
+
     }
 
     camera.takeImage();
