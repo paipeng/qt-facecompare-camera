@@ -402,6 +402,16 @@ int ArcFaceEngine::faceDetect(const QImage &image, FaceData *faceData) {
                         QString::number(faceData->ageInfo.ageArray[0]), QString::number(faceData->genderInfo.genderArray[0]),
                     QString::number(faceData->liveNessInfo.isLive[0]));
             qDebug() << "age/gender: " << showStr;
+
+
+            // crop face area to image
+            faceData->image = image.copy( faceData->faceInfo.faceRect.left,
+                                          faceData->faceInfo.faceRect.top,
+                                          faceData->faceInfo.faceRect.right - faceData->faceInfo.faceRect.left,
+                                          faceData->faceInfo.faceRect.bottom - faceData->faceInfo.faceRect.top);
+
+
+
             //FR used for face compare 1032 bytes
             faceData->faceFeature = { 0 };
             faceData->faceFeature.featureSize = FACE_FEATURE_SIZE;
