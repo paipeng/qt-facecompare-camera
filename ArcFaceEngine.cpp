@@ -449,8 +449,9 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
     if (MOK == ret) {
         // 可以选择比对模型，人证模型推荐阈值：0.82 生活照模型推荐阈值：0.80
         foreach(FaceData registeredFaceData, registeredFaceDataList) {
-            ret = FacePairMatching(confidenceLevel, faceData.faceFeature, registeredFaceData.faceFeature);
-            if (MOK == ret) {
+            qDebug() << "registeredFaceData: " << registeredFaceData.faceFeature.featureSize;
+            int ret2 = FacePairMatching(confidenceLevel, faceData.faceFeature, registeredFaceData.faceFeature);
+            if (MOK == ret2) {
                 qDebug() << "FacePairMatching: " << confidenceLevel;
             }
             if (confidenceLevel > 0.8) {
