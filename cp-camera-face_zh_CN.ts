@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
@@ -22,12 +22,12 @@
     <message>
         <location filename="mainwindow.ui" line="145"/>
         <source>register</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">注册人脸</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="11"/>
         <source>app_info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">程序信息</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="33"/>
