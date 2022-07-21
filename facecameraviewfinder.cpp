@@ -49,6 +49,11 @@ void FaceCameraViewfinder::paintEvent(QPaintEvent* event) {
 
 
         painter.drawRect(rect);
+
+        QString scoreStr;
+        scoreStr.sprintf("Score: %.02f", this->score);
+        painter.drawText(faceData.faceInfo.faceRect.left * scale,
+                         faceData.faceInfo.faceRect.top * scale - 10, scoreStr);
     }
 }
 
