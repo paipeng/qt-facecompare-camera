@@ -482,16 +482,20 @@ int ArcFaceEngine::registerFace(const QImage& image) {
 }
 
 int ArcFaceEngine::registerFaceData(FaceData *faceData) {
+    qDebug() << "registerFaceData " << faceData->faceFeature.featureSize;
     FaceData registeredFaceData;
     registeredFaceData.width = faceData->width;
     registeredFaceData.height = faceData->height;
 
-    registeredFaceData.faceFeature.feature = (MByte*)malloc(sizeof(char) * registeredFaceData.faceFeature.featureSize);
-    memcpy(registeredFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * faceData->faceFeature.featureSize);
-    //memcpy(registeredFaceData.ageInfo, faceData->ageInfo, sizeof(ASF_AgeInfo));
-    registeredFaceData.image = faceData->image;
+    if (faceData->faceFeature.featureSize > 0 || faceData->faceFeature.feature != NULL) {
+        registeredFaceData.faceFeature.featureSize = faceData->faceFeature.featureSize;
+        registeredFaceData.faceFeature.feature = (MByte*)malloc(sizeof(char) * registeredFaceData.faceFeature.featureSize);
+        memcpy(registeredFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * faceData->faceFeature.featureSize);
+        //memcpy(registeredFaceData.ageInfo, faceData->ageInfo, sizeof(ASF_AgeInfo));
+        registeredFaceData.image = faceData->image;
 
-    registeredFaceDataList.append(registeredFaceData);
+        registeredFaceDataList.append(registeredFaceData);
+    }
     return 0;
 }
 
