@@ -68,6 +68,25 @@
              <property name="text">
               <string>TextLabel</string>
              </property>
+             <widget class="QLabel" name="detectedFaceLabel">
+              <property name="geometry">
+               <rect>
+                <x>463</x>
+                <y>10</y>
+                <width>101</width>
+                <height>101</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="cp-camera-face.qrc">:/images/FacialDetection/images/FacialDetection.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
             </widget>
            </widget>
            <widget class="QWidget" name="page_2">

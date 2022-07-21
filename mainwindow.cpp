@@ -234,8 +234,8 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
 
 
     ui->cameraViewfinder->updateData(decodeState, score, &(arcFaceEngine.faceData), t==0?0:1000.0f/t, previewImageSize);
+    FaceData *faceData = ui->cameraViewfinder->getFaceData();
     if (decodeState == 0) {
-        FaceData *faceData = ui->cameraViewfinder->getFaceData();
 #if 1
         QString showStr = QString(tr("face_result")).arg(
                     QString::number(faceData->ageInfo.ageArray[0]),
@@ -246,6 +246,13 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
 #endif
     } else {
         ui->cameraLabel->setText(QString("not found -> error"));
+    }
+    if (faceData != NULL) {
+        int w = ui->detectedFaceLabel->width();
+        int h = ui->detectedFaceLabel->height();
+
+        QPixmap pixmap = QPixmap::fromImage(faceData->image);
+        ui->detectedFaceLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
     }
 
     camera.takeImage();
