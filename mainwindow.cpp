@@ -190,7 +190,7 @@ void MainWindow::processCapturedImage(int cameraId, const QImage& img) {
 }
 
 void MainWindow::cameraReadyForCapture(int cameraId, bool ready) {
-    qDebug() << "cameraReadyForCapture: " << cameraId << " state: " << ready;
+    //qDebug() << "cameraReadyForCapture: " << cameraId << " state: " << ready;
 
     if (ready) {
         if (cameraId == 0) {
