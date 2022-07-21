@@ -459,11 +459,11 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
             }
         }
     }
+    emit updateFaceDecodeResult(ret, confidenceLevel);
     if (faceData.faceFeature.feature != NULL) {
         free(faceData.faceFeature.feature);
         faceData.faceFeature.feature = NULL;
     }
-    emit updateFaceDecodeResult(ret, confidenceLevel);
 }
 
 int ArcFaceEngine::registerFace(const QImage& image) {
@@ -477,5 +477,19 @@ int ArcFaceEngine::registerFace(const QImage& image) {
     }
     qDebug() << "registeredFaceDataList size: " << registeredFaceDataList.size();
     return ret;
+}
+
+int ArcFaceEngine::registerFaceData(FaceData *faceData) {
+    FaceData registeredFaceData;
+    registeredFaceData.width = faceData->width;
+    registeredFaceData.height = faceData->height;
+
+    registeredFaceData.faceFeature.feature = (MByte*)malloc(sizeof(char) * registeredFaceData.faceFeature.featureSize);
+    memcpy(registeredFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * faceData->faceFeature.featureSize);
+    //memcpy(registeredFaceData.ageInfo, faceData->ageInfo, sizeof(ASF_AgeInfo));
+    registeredFaceData.image = faceData->image;
+
+    registeredFaceDataList.append(registeredFaceData);
+    return 0;
 }
 

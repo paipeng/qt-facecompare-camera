@@ -66,6 +66,7 @@ public:
 	const ASF_VERSION GetVersion();
 
     int registerFace(const QImage& image);
+    int registerFaceData(FaceData *faceData);
 	
 public slots:
     void stop();
