@@ -284,10 +284,13 @@ void MainWindow::setPhotoImage(const QString & filePath) {
 
 void MainWindow::registerFaceImage() {
     qDebug() << "registerFaceImage";
-    const QPixmap* pixmap = ui->registeredFaceLabel->pixmap();
+    const QPixmap* pixmap = ui->detectedFaceLabel->pixmap();
     if (pixmap) {
-        QImage image(pixmap->toImage());
-        int ret = arcFaceEngine.registerFace(image);
+        //QImage image(pixmap->toImage());
+        //image.save("detectedFace.jpeg");
+        detectedFaceData.image.save("detectedFaceImage.bmp");
+#if 0
+        int ret = arcFaceEngine.registerFace(detectedFaceImage);
         if (ret == 0) {
             ui->statusbar->showMessage(tr("face_registered"));
             int i = 0;
@@ -301,6 +304,18 @@ void MainWindow::registerFaceImage() {
         } else {
             QMessageBox::critical(this, tr("face_register"), tr("face_register_failed"), QMessageBox::Ok);
         }
+#else
+        arcFaceEngine.registerFaceData(&detectedFaceData);
+        ui->statusbar->showMessage(tr("face_registered"));
+        int i = 0;
+        foreach(FaceData faceData, arcFaceEngine.registeredFaceDataList) {
+            int w = registeredImageLabeList.at(i)->width();
+            int h = registeredImageLabeList.at(i)->height();
+            QPixmap pixmap = QPixmap::fromImage(faceData.image);
+            registeredImageLabeList.at(i)->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+            i++;
+        }
+#endif
     }
 
 }

@@ -51,5 +51,6 @@ private:
     QSize previewImageSize;
 
     QList<QLabel*> registeredImageLabeList;
+    FaceData detectedFaceData;
 };
 #endif // MAINWINDOW_H
