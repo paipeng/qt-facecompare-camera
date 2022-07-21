@@ -464,6 +464,7 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
     if (faceData.faceFeature.feature != NULL) {
         free(faceData.faceFeature.feature);
         faceData.faceFeature.feature = NULL;
+        faceData.faceFeature.featureSize = 0;
     }
 }
 
