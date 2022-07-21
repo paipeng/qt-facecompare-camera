@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow), camera(0, this)
 {
     ui->setupUi(this);
-
+    detectedFaceData.faceFeature.featureSize = 0;
 
     registeredImageLabeList.append(ui->registeredFace1Label);
     registeredImageLabeList.append(ui->registeredFace2Label);
