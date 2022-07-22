@@ -83,44 +83,7 @@ void MainWindow::initCameras() {
 
     camera.setAutoCapture(true);
 
-    qDebug() << "App path : " << qApp->applicationDirPath();
-    QString path = qApp->applicationDirPath();
-    path.append("/setting.ini");
-    qDebug() << "setting path: " << path;
-    QSettings settings(path, QSettings::IniFormat);
-    QString appId = settings.value("x64_free/APPID", "XXXXXXXX").toString(); // settings.value() returns QVariant
-    qDebug() << "appId: " << appId;
-
-    QString sdkKey = settings.value("x64_free/SDKKEY", "YYYYYYYY").toString(); // settings.value() returns QVariant
-    qDebug() << "sdkKey: " << sdkKey;
-
-    //arcFaceEngine = new ArcFaceEngine();
-
-    MRESULT faceRes = arcFaceEngine.ActiveSDK((char*)(appId.toStdString().c_str()), (char*)(sdkKey.toStdString().c_str()), NULL);
-    qDebug() << "ActiveSDK: " << faceRes;
-
-    if (faceRes == 0) {
-        //QMessageBox::information(this, tr("arcsoft_sdk"), tr("arcsoft_sdk_activate_success"), QMessageBox::Ok);
-
-        //获取激活文件信息
-        ASF_ActiveFileInfo activeFileInfo = { 0 };
-        arcFaceEngine.GetActiveFileInfo(activeFileInfo);
-
-        if (faceRes == MOK) {
-            faceRes = arcFaceEngine.InitEngine(ASF_DETECT_MODE_IMAGE);//Image
-            qDebug() << "IMAGE模式下初始化结果: " << faceRes;
-
-            //faceRes = arcFaceEngine->InitEngine(ASF_DETECT_MODE_VIDEO);//Video
-            //qDebug() << "VIDEO模式下初始化结果: " << faceRes;
-        }
-
-        arcFaceEngine.SetLivenessThreshold(0.8f, 0.0f);
-    } else if (faceRes == 28673) {
-        QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
-    } else {
-        QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
-
-    }
+    activateArcSoftSDK();
 }
 
 void MainWindow::startCamera() {
@@ -337,6 +300,46 @@ void MainWindow::registerFaceImage() {
 
 }
 
+void MainWindow::activateArcSoftSDK() {
+    qDebug() << "App path : " << qApp->applicationDirPath();
+    QString path = qApp->applicationDirPath();
+    path.append("/setting.ini");
+    qDebug() << "setting path: " << path;
+    QSettings settings(path, QSettings::IniFormat);
+    QString appId = settings.value("x64_free/APPID", "XXXXXXXX").toString(); // settings.value() returns QVariant
+    qDebug() << "appId: " << appId;
+
+    QString sdkKey = settings.value("x64_free/SDKKEY", "YYYYYYYY").toString(); // settings.value() returns QVariant
+    qDebug() << "sdkKey: " << sdkKey;
+
+    //arcFaceEngine = new ArcFaceEngine();
+
+    MRESULT faceRes = arcFaceEngine.ActiveSDK((char*)(appId.toStdString().c_str()), (char*)(sdkKey.toStdString().c_str()), NULL);
+    qDebug() << "ActiveSDK: " << faceRes;
+
+    if (faceRes == 0) {
+        //QMessageBox::information(this, tr("arcsoft_sdk"), tr("arcsoft_sdk_activate_success"), QMessageBox::Ok);
+
+        //获取激活文件信息
+        ASF_ActiveFileInfo activeFileInfo = { 0 };
+        arcFaceEngine.GetActiveFileInfo(activeFileInfo);
+
+        if (faceRes == MOK) {
+            faceRes = arcFaceEngine.InitEngine(ASF_DETECT_MODE_IMAGE);//Image
+            qDebug() << "IMAGE模式下初始化结果: " << faceRes;
+
+            //faceRes = arcFaceEngine->InitEngine(ASF_DETECT_MODE_VIDEO);//Video
+            //qDebug() << "VIDEO模式下初始化结果: " << faceRes;
+        }
+
+        arcFaceEngine.SetLivenessThreshold(0.8f, 0.0f);
+    } else if (faceRes == 28673) {
+        QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
+    } else {
+        QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
+    }
+}
+
 void MainWindow::menuExit() {
     qDebug() << "menuExit";
     QCoreApplication::quit();
@@ -379,5 +382,7 @@ void MainWindow::menuSettings() {
         }
         settings.setValue("x64_free/APPID", list.at(0));
         settings.setValue("x64_free/SDKKEY", list.at(1));
+
+        activateArcSoftSDK();
     }
 }

@@ -43,6 +43,7 @@ private:
     void displayViewfinder(int cameraId);
     void displayCapturedImage(int cameraId);
     void setPhotoImage(const QString & filePath);
+    void activateArcSoftSDK();
 private:
     Ui::MainWindow *ui;
     CPCamera camera;
