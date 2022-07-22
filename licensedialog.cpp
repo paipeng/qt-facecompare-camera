@@ -17,6 +17,7 @@ LicenseDialog::LicenseDialog(QWidget *parent, const QString &appId, const QStrin
 }
 
 void LicenseDialog::init() {
+    this->setWindowTitle(tr("settings"));
     QFormLayout *lytMain = new QFormLayout(this);
 
     QLabel *titleLabel = new QLabel(tr("please_input_arcsoft_license"), this);
