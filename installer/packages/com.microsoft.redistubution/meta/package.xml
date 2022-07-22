@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-    <DisplayName>Microsoft VisualStudio Redistubution 2013</DisplayName>
-    <Description>VisualStudio Redistubution 2013</Description>
-    <Version>1.0.0</Version>
+    <DisplayName>Microsoft Visual C++ 2013 Redistributable</DisplayName>
+    <Description>Visua C++ Redistributable (x64) 2013</Description>
+    <Version>12.0.30501</Version>
     <ReleaseDate>2022-07-22</ReleaseDate>   
     <ForcedInstallation>true</ForcedInstallation>
+    <Default>script</Default>
+    <Script>installscript.qs</Script>
 </Package>
