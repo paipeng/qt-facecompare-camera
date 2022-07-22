@@ -468,6 +468,7 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
         }
     }
     emit updateFaceDecodeResult(ret, confidenceLevel, &faceData);
+    qDebug() << "faceCompare end";
 
 }
 
