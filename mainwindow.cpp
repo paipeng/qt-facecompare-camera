@@ -232,7 +232,7 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score, FaceData* 
     qint64 t = timer.elapsed();
 
     qDebug() << "updateFaceDecodeResult: " << decodeState << " score: " << score << " elapsed time: " << t;
-    FaceData *faceData2 = &(arcFaceEngine.faceData);//ui->cameraViewfinder->getFaceData();
+    //FaceData *faceData2 = &(arcFaceEngine.faceData);//ui->cameraViewfinder->getFaceData();
     qDebug() << "faceData->faceFeature.featureSize: " << faceData->faceFeature.featureSize;
 
     ui->cameraViewfinder->updateData(decodeState, score, &(arcFaceEngine.faceData), t==0?0:1000.0f/t, previewImageSize);
