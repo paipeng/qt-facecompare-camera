@@ -30,8 +30,8 @@ function Component()
 {
     // default constructor
     // Add a user interface file called ErrorPage, which should not be complete
-    installer.addWizardPage( component, "ErrorPage", QInstaller.ReadyForInstallation );
-    component.userInterface( "ErrorPage" ).complete = false;
+    //installer.addWizardPage( component, "ErrorPage", QInstaller.ReadyForInstallation );
+    //component.userInterface( "ErrorPage" ).complete = false;
 }
 
 Component.prototype.createOperations = function()
@@ -40,6 +40,7 @@ Component.prototype.createOperations = function()
     component.createOperations();
 
     if (systemInfo.productType === "windows") {
+        component.addOperation("Execute", "vcredist_x64.exe");
 /*
         component.addOperation("CreateShortcut", "@TargetDir@/cp-camera-face.exe", "@StartMenuDir@/cp-camera-face.lnk",
             "workingDirectory=@TargetDir@", "iconPath=@TargetDir@/app.ico",
