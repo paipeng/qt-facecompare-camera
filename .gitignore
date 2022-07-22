@@ -5,10 +5,6 @@
 *.a
 *.la
 *.lai
-*.so
-*.so.*
-*.dll
-*.dylib
 
 # Qt-es
 object_script.*.Release
@@ -50,3 +46,5 @@ compile_commands.json
 
 # QtCreator local machine specific files for imported projects
 *creator.user*
+dist/
+installer/packages/com.paipeng.cpcameraface/data/

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>CP人脸识别程序</Name>
+    <Version>1.0.0</Version>
+    <Title>在QT环境下使用ArcSoft实现人脸识别比对</Title>
+    <Publisher>Pai Peng</Publisher>
+    <!-- Directory name is used in component.xml -->
+    <StartMenuDir>CP人脸识别程序</StartMenuDir>
+    <TargetDir>@ApplicationsDirX64@/CPCameraFace</TargetDir>
+</Installer>
