@@ -11,10 +11,14 @@ class LicenseDialog : public QDialog
     Q_OBJECT
 public:
     explicit LicenseDialog(QWidget *parent = nullptr);
-static QStringList getStrings(QWidget *parent, bool *ok = nullptr);
-
+    LicenseDialog(QWidget *parent, const QString &appId, const QString& sdkKey);
+    static QStringList getStrings(QWidget *parent, const QString &appId, const QString& sdkKey, bool *ok = nullptr);
+private:
+    void init();
 private:
     QList<QLineEdit*> fields;
+    QString appId;
+    QString sdkKey;
 };
 
 #endif // LICENSEDIALOG_H

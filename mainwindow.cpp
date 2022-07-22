@@ -358,9 +358,25 @@ void MainWindow::menuAbout() {
 
 void MainWindow::menuSettings() {
     qDebug() << "menuSettings";
+    qDebug() << "App path : " << qApp->applicationDirPath();
+    QString path = qApp->applicationDirPath();
+    path.append("/setting.ini");
+    qDebug() << "setting path: " << path;
+    QSettings settings(path, QSettings::IniFormat);
+    QString appId = settings.value("x64_free/APPID", "XXXXXXXX").toString(); // settings.value() returns QVariant
+    qDebug() << "appId: " << appId;
+
+    QString sdkKey = settings.value("x64_free/SDKKEY", "YYYYYYYY").toString(); // settings.value() returns QVariant
+    qDebug() << "sdkKey: " << sdkKey;
+
     bool ok;
-    QStringList list = LicenseDialog::getStrings(this, &ok);
+    QStringList list = LicenseDialog::getStrings(this, appId, sdkKey, &ok);
     if (ok) {
         // use list
+        foreach(QString str, list) {
+            qDebug() << str;
+        }
+        settings.setValue("x64_free/APPID", list.at(0));
+        settings.setValue("x64_free/SDKKEY", list.at(1));
     }
 }
