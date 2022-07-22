@@ -23,7 +23,7 @@ private slots:
     void startCamera();
     void cameraChanged(int index);
     const QCameraInfo getSelectedCameraInfo(int source);
-    void updateFaceDecodeResult(int decodeState, float score);
+    void updateFaceDecodeResult(int decodeState, float score, FaceData* faceData);
 
     void registeredFaceLabelClicked();
     void registerFaceImage();

@@ -72,6 +72,7 @@ int ColorSpaceConversion(IplImage* image, MInt32 format, ASVLOFFSCREEN& offscree
 
 
 ArcFaceEngine::ArcFaceEngine():m_stop(false), decoding(false) {
+    memset(&faceData, 0, sizeof(FaceData));
 
 }
 
@@ -440,10 +441,16 @@ int ArcFaceEngine::faceDetect(const QImage &image, FaceData *faceData) {
 void ArcFaceEngine::faceCompare(const QImage& image) {
     qDebug() << "faceCompare";
     //FaceData faceData;
+    qDebug() << "faceFeature dealloc";
+    if (faceData.faceFeature.feature != NULL) {
+        free(faceData.faceFeature.feature);
+        faceData.faceFeature.feature = NULL;
+        faceData.faceFeature.featureSize = 0;
+    }
     memset(&faceData, 0, sizeof(FaceData));
 
     int ret = faceDetect(image, &faceData);
-    qDebug() << "faceDetect:" << ret;
+    qDebug() << "faceDetect:" << ret << " feautre data size: " << faceData.faceFeature.featureSize;
 
     MFloat confidenceLevel = 0;
     if (MOK == ret) {
@@ -460,12 +467,8 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
             }
         }
     }
-    emit updateFaceDecodeResult(ret, confidenceLevel);
-    if (faceData.faceFeature.feature != NULL) {
-        free(faceData.faceFeature.feature);
-        faceData.faceFeature.feature = NULL;
-        faceData.faceFeature.featureSize = 0;
-    }
+    emit updateFaceDecodeResult(ret, confidenceLevel, &faceData);
+
 }
 
 int ArcFaceEngine::registerFace(const QImage& image) {

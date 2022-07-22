@@ -75,7 +75,7 @@ public slots:
     void setImage(const QImage &image);
 
 signals:
-    Q_SIGNAL void updateFaceDecodeResult(int decodeState, float score);
+    Q_SIGNAL void updateFaceDecodeResult(int decodeState, float score, FaceData* faceData);
 
 private:
 	MHandle m_hEngine;

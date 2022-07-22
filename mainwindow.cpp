@@ -226,16 +226,16 @@ void MainWindow::displayCapturedImage(int cameraId) {
 }
 
 
-void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
+void MainWindow::updateFaceDecodeResult(int decodeState, float score, FaceData* faceData) {
     Q_UNUSED(decodeState);
     Q_UNUSED(score);
     qint64 t = timer.elapsed();
 
     qDebug() << "updateFaceDecodeResult: " << decodeState << " score: " << score << " elapsed time: " << t;
-
+    FaceData *faceData2 = &(arcFaceEngine.faceData);//ui->cameraViewfinder->getFaceData();
+    qDebug() << "faceData->faceFeature.featureSize: " << faceData->faceFeature.featureSize;
 
     ui->cameraViewfinder->updateData(decodeState, score, &(arcFaceEngine.faceData), t==0?0:1000.0f/t, previewImageSize);
-    FaceData *faceData = ui->cameraViewfinder->getFaceData();
     if (decodeState == 0) {
 #if 1
         QString showStr = QString(tr("face_result")).arg(
@@ -255,6 +255,7 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
         QPixmap pixmap = QPixmap::fromImage(faceData->image);
         ui->detectedFaceLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
+        qDebug() << "faceData->faceFeature.featureSize: " << faceData->faceFeature.featureSize;
         if (faceData->faceFeature.featureSize > 0) {
             detectedFaceData.image = faceData->image;
             if (detectedFaceData.faceFeature.feature == NULL) {
@@ -262,7 +263,6 @@ void MainWindow::updateFaceDecodeResult(int decodeState, float score) {
                 detectedFaceData.faceFeature.feature = (MByte*) malloc(sizeof(char) * faceData->faceFeature.featureSize);
             }
             detectedFaceData.faceFeature.featureSize = faceData->faceFeature.featureSize;
-            qDebug() << "faceData->faceFeature.featureSize: " << faceData->faceFeature.featureSize;
             //memcpy(detectedFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * faceData->faceFeature.featureSize);
 
             for (int i = 0; i < faceData->faceFeature.featureSize; i++) {
