@@ -4,7 +4,11 @@
     <Description>QT CP人脸识别程序</Description>
     <Version>1.0.0</Version>
     <ReleaseDate>2022-07-22</ReleaseDate>
-    <Default>false</Default>
+    <Licenses>
+        <License name="Beer Public License Agreement" file="LICENSE.txt" />
+    </Licenses>
+    <Default>script</Default>
     <Script>installscript.qs</Script>
     <ForcedInstallation>true</ForcedInstallation>
+    <Dependencies>com.microsoft.redistubution</Dependencies>
 </Package>
