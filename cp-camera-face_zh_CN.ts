@@ -1,22 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
     <name>LicenseDialog</name>
     <message>
-        <location filename="licensedialog.cpp" line="22"/>
+        <location filename="licensedialog.cpp" line="20"/>
+        <source>settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="licensedialog.cpp" line="23"/>
         <source>please_input_arcsoft_license</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请输入ArcSoft许可</translation>
     </message>
     <message>
-        <location filename="licensedialog.cpp" line="24"/>
+        <location filename="licensedialog.cpp" line="25"/>
         <source>arcsoft_app_id</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">App Id</translation>
     </message>
     <message>
-        <location filename="licensedialog.cpp" line="29"/>
+        <location filename="licensedialog.cpp" line="30"/>
         <source>arcsoft_sdk_key</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SDK Key</translation>
     </message>
 </context>
 <context>
@@ -50,27 +55,27 @@
     <message>
         <location filename="mainwindow.cpp" line="44"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;文件</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="47"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;退出</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="49"/>
         <source>exit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">退出</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="53"/>
         <source>&amp;Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;属性</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="54"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;设置</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="56"/>
@@ -81,7 +86,7 @@
         <location filename="mainwindow.cpp" line="61"/>
         <location filename="mainwindow.cpp" line="62"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;帮助</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="64"/>
@@ -108,17 +113,17 @@
         <location filename="mainwindow.cpp" line="312"/>
         <location filename="mainwindow.cpp" line="326"/>
         <source>face_registered</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">人脸注册成功</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="322"/>
         <source>face_register</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">注册人脸</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="322"/>
         <source>face_register_failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">人脸注册失败</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="352"/>
