@@ -339,6 +339,7 @@ void MainWindow::registerFaceImage() {
 
 void MainWindow::menuExit() {
     qDebug() << "menuExit";
+    QCoreApplication::quit();
 
 }
 
