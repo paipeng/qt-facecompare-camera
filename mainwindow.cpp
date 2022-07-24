@@ -17,9 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
     registeredImageLabeList.append(ui->registeredFace5Label);
     registeredImageLabeList.append(ui->registeredFace6Label);
 
+    ui->statusbar->showMessage(tr("app_info"));
     initMenu();
     initCameras();
-    ui->statusbar->showMessage(tr("app_info"));
 
     QObject::connect(ui->registeredFaceLabel, SIGNAL(clicked()), this, SLOT(registeredFaceLabelClicked()));
 
@@ -327,8 +327,15 @@ void MainWindow::activateArcSoftSDK() {
 
         //获取激活文件信息
         ASF_ActiveFileInfo activeFileInfo = { 0 };
-        arcFaceEngine.GetActiveFileInfo(activeFileInfo);
-
+        MRESULT afResult = arcFaceEngine.GetActiveFileInfo(activeFileInfo);
+        qDebug() << "GetActiveFileInfo ret: " << afResult;
+        if (afResult == MOK) {
+            uint second = atoi(activeFileInfo.endTime);
+            QString endTime = QDateTime::fromTime_t(second).toString(tr("format_date")); //(activeFileInfo.endTime);
+            QString sdkVersion(activeFileInfo.sdkVersion);
+            QString sdkInfo = QString(tr("sdk_info")).arg(endTime, sdkVersion);
+            ui->statusbar->showMessage(sdkInfo);
+        }
         if (faceRes == MOK) {
             faceRes = arcFaceEngine.InitEngine(ASF_DETECT_MODE_IMAGE);//Image
             qDebug() << "IMAGE模式下初始化结果: " << faceRes;

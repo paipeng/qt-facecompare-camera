@@ -6,7 +6,7 @@
     <message>
         <location filename="licensedialog.cpp" line="20"/>
         <source>settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置</translation>
     </message>
     <message>
         <location filename="licensedialog.cpp" line="23"/>
@@ -48,7 +48,7 @@
         <translation type="unfinished">注册人脸</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="22"/>
+        <location filename="mainwindow.cpp" line="20"/>
         <source>app_info</source>
         <translation type="unfinished">程序信息</translation>
     </message>
@@ -80,7 +80,7 @@
     <message>
         <location filename="mainwindow.cpp" line="56"/>
         <source>settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="61"/>
@@ -96,7 +96,7 @@
     <message>
         <location filename="mainwindow.cpp" line="68"/>
         <source>&amp;About</source>
-        <translation type="unfinished">关于</translation>
+        <translation type="unfinished">&amp;关于</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="70"/>
@@ -104,34 +104,44 @@
         <translation type="unfinished">关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="119"/>
-        <location filename="mainwindow.cpp" line="121"/>
+        <location filename="mainwindow.cpp" line="334"/>
+        <source>format_date</source>
+        <translation type="unfinished">yyyy年MM月dd日 hh:mm:ss</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="336"/>
+        <source>sdk_info</source>
+        <translation type="unfinished">ArcSoft SDK信息：过期日期 %1 版本 %2</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="349"/>
+        <location filename="mainwindow.cpp" line="351"/>
         <source>arcsoft_sdk</source>
         <translation type="unfinished">ARCSOFT SDK</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="312"/>
-        <location filename="mainwindow.cpp" line="326"/>
+        <location filename="mainwindow.cpp" line="275"/>
+        <location filename="mainwindow.cpp" line="289"/>
         <source>face_registered</source>
         <translation type="unfinished">人脸注册成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="322"/>
+        <location filename="mainwindow.cpp" line="285"/>
         <source>face_register</source>
         <translation type="unfinished">注册人脸</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="322"/>
+        <location filename="mainwindow.cpp" line="285"/>
         <source>face_register_failed</source>
         <translation type="unfinished">人脸注册失败</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="352"/>
+        <location filename="mainwindow.cpp" line="368"/>
         <source>app_about_content</source>
         <translation type="unfinished">CP人脸识别程序（内嵌ArcSoft SDK）</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="355"/>
+        <location filename="mainwindow.cpp" line="371"/>
         <source>menu_about</source>
         <translation type="unfinished">关于</translation>
     </message>
@@ -140,47 +150,47 @@
         <translation type="obsolete">ARCSOFT激活成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="119"/>
-        <location filename="mainwindow.cpp" line="121"/>
+        <location filename="mainwindow.cpp" line="349"/>
+        <location filename="mainwindow.cpp" line="351"/>
         <source>please set valide appid/sdk-key</source>
         <translation type="unfinished">请设置有效ARCOSFT APPID/SDK Key</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="162"/>
-        <location filename="mainwindow.cpp" line="164"/>
-        <location filename="mainwindow.cpp" line="169"/>
-        <location filename="mainwindow.cpp" line="172"/>
+        <location filename="mainwindow.cpp" line="125"/>
+        <location filename="mainwindow.cpp" line="127"/>
+        <location filename="mainwindow.cpp" line="132"/>
+        <location filename="mainwindow.cpp" line="135"/>
         <source>start</source>
         <translation type="unfinished">开始</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="178"/>
-        <location filename="mainwindow.cpp" line="180"/>
+        <location filename="mainwindow.cpp" line="141"/>
+        <location filename="mainwindow.cpp" line="143"/>
         <source>stop</source>
         <translation type="unfinished">结束</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="241"/>
+        <location filename="mainwindow.cpp" line="204"/>
         <source>face_result</source>
         <translation type="unfinished">年龄:%1,性别:%2,活体:%3, score: %4</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="243"/>
+        <location filename="mainwindow.cpp" line="206"/>
         <source>male</source>
         <translation type="unfinished">男</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="243"/>
+        <location filename="mainwindow.cpp" line="206"/>
         <source>female</source>
         <translation type="unfinished">女</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="281"/>
+        <location filename="mainwindow.cpp" line="244"/>
         <source>open_image</source>
         <translation type="unfinished">选择人像照片</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="281"/>
+        <location filename="mainwindow.cpp" line="244"/>
         <source>image_file_format</source>
         <translation type="unfinished">图片文件格式 (*.png *.jpg *.jpeg *.bmp)</translation>
     </message>
