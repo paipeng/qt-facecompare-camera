@@ -25,7 +25,16 @@ void myCustomMessageHandler(QtMsgType type, const QMessageLogContext &, const QS
             txt = QString("Fatal: %1").arg(msg);
             abort();
     }
-    QFile outFile("cp-camera-face.log");
+    QString path = QDir::homePath();
+    path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);//, ".cp-camera-face", QStandardPaths::LocateDirectory);
+    path.append("/.cp-camera-face");
+    if (!QDir(path).exists()) {
+        QDir().mkdir(path);
+    }
+    //qDebug() << "App path : " << path;
+    path.append("/cp-camera-face.log");
+    //qDebug() << "log path: " << path;
+    QFile outFile(path);
     outFile.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream ts(&outFile);
     ts << txt << endl;
