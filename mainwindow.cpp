@@ -267,18 +267,24 @@ void MainWindow::registerFaceImage() {
     qDebug() << "registerFaceImage";
     const QPixmap* pixmap = ui->detectedFaceLabel->pixmap();
     if (pixmap) {
-        //QImage image(pixmap->toImage());
-        //image.save("detectedFace.jpeg");
-        detectedFaceData.image.save("detectedFaceImage.bmp");
-        arcFaceEngine.registerFaceData(&detectedFaceData);
-        ui->statusbar->showMessage(tr("face_registered"));
-        int i = 0;
-        foreach(FaceData faceData, arcFaceEngine.registeredFaceDataList) {
-            int w = registeredImageLabeList.at(i)->width();
-            int h = registeredImageLabeList.at(i)->height();
-            QPixmap pixmap = QPixmap::fromImage(faceData.image);
-            registeredImageLabeList.at(i)->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
-            i++;
+        bool bRet = false;
+        QString placeholder = "";
+        QString info = QInputDialog::getText(this, tr("register_face_image_title"), tr("please_input_face_info"), QLineEdit::Normal, placeholder, &bRet);
+        if (bRet) {
+            //QImage image(pixmap->toImage());
+            //image.save("detectedFace.jpeg");
+            detectedFaceData.image.save("detectedFaceImage.bmp");
+            arcFaceEngine.registerFaceData(&detectedFaceData);
+            ui->statusbar->showMessage(tr("face_registered"));
+            int i = 0;
+            foreach(FaceData faceData, arcFaceEngine.registeredFaceDataList) {
+                int w = registeredImageLabeList.at(i)->width();
+                int h = registeredImageLabeList.at(i)->height();
+                QPixmap pixmap = QPixmap::fromImage(faceData.image);
+                registeredImageLabeList.at(i)->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+                i++;
+            }
+
         }
     }
 

@@ -109,52 +109,59 @@
         <translation type="unfinished">关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="349"/>
-        <location filename="mainwindow.cpp" line="395"/>
-        <location filename="mainwindow.cpp" line="398"/>
+        <location filename="mainwindow.cpp" line="272"/>
+        <source>register_face_image_title</source>
+        <translation type="unfinished">注册人脸信息</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="272"/>
+        <source>please_input_face_info</source>
+        <translation type="unfinished">请输入此人脸信息</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="338"/>
+        <location filename="mainwindow.cpp" line="384"/>
+        <location filename="mainwindow.cpp" line="387"/>
         <source>format_date</source>
         <translation type="unfinished">yyyy年MM月dd日 hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="351"/>
+        <location filename="mainwindow.cpp" line="340"/>
         <source>sdk_info</source>
         <translation type="unfinished">ArcSoft SDK信息：过期日期 %1 版本 %2</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="364"/>
-        <location filename="mainwindow.cpp" line="366"/>
-        <location filename="mainwindow.cpp" line="368"/>
+        <location filename="mainwindow.cpp" line="353"/>
+        <location filename="mainwindow.cpp" line="355"/>
+        <location filename="mainwindow.cpp" line="357"/>
         <source>arcsoft_sdk</source>
         <translation type="unfinished">ARCSOFT SDK</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="276"/>
-        <location filename="mainwindow.cpp" line="290"/>
+        <location filename="mainwindow.cpp" line="278"/>
         <source>face_registered</source>
         <translation type="unfinished">人脸注册成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="286"/>
         <source>face_register</source>
-        <translation type="unfinished">注册人脸</translation>
+        <translation type="obsolete">注册人脸</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="286"/>
         <source>face_register_failed</source>
-        <translation type="unfinished">人脸注册失败</translation>
+        <translation type="obsolete">人脸注册失败</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="364"/>
+        <location filename="mainwindow.cpp" line="353"/>
         <source>please_run_in_admin_mode</source>
         <translation type="unfinished">请重新使用管理员模式启动此程序，当前用户无权限写入激活文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="385"/>
+        <location filename="mainwindow.cpp" line="374"/>
         <source>app_about_content</source>
         <translation type="unfinished">CP人脸识别程序（内嵌ArcSoft SDK）</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="406"/>
+        <location filename="mainwindow.cpp" line="395"/>
         <source>sdk_info2</source>
         <translation type="unfinished">开始日期: %1
 过期日期: %2
@@ -165,7 +172,7 @@ AppId: %6
         </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="410"/>
+        <location filename="mainwindow.cpp" line="399"/>
         <source>menu_about</source>
         <translation type="unfinished">关于</translation>
     </message>
@@ -174,8 +181,8 @@ AppId: %6
         <translation type="obsolete">ARCSOFT激活成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="366"/>
-        <location filename="mainwindow.cpp" line="368"/>
+        <location filename="mainwindow.cpp" line="355"/>
+        <location filename="mainwindow.cpp" line="357"/>
         <source>please set valide appid/sdk-key</source>
         <translation type="unfinished">请设置有效ARCOSFT APPID/SDK Key</translation>
     </message>
