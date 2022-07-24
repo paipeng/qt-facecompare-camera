@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
@@ -120,37 +120,43 @@
         <translation type="unfinished">关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="282"/>
+        <location filename="mainwindow.cpp" line="281"/>
+        <source>arcsoft_sdk_max_registered_face_exceeded</source>
+        <translation type="unfinished">由于注册人脸数量已满，无法注册新数据</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="287"/>
         <source>register_face_image_title</source>
         <translation type="unfinished">注册人脸信息</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="282"/>
+        <location filename="mainwindow.cpp" line="287"/>
         <source>please_input_face_info</source>
         <translation type="unfinished">请输入此人脸信息</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="358"/>
-        <location filename="mainwindow.cpp" line="404"/>
-        <location filename="mainwindow.cpp" line="407"/>
+        <location filename="mainwindow.cpp" line="363"/>
+        <location filename="mainwindow.cpp" line="409"/>
+        <location filename="mainwindow.cpp" line="412"/>
         <source>format_date</source>
         <translation type="unfinished">yyyy年MM月dd日 hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="360"/>
+        <location filename="mainwindow.cpp" line="365"/>
         <source>sdk_info</source>
         <translation type="unfinished">ArcSoft SDK信息：过期日期 %1 版本 %2</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="54"/>
-        <location filename="mainwindow.cpp" line="373"/>
-        <location filename="mainwindow.cpp" line="375"/>
-        <location filename="mainwindow.cpp" line="377"/>
+        <location filename="mainwindow.cpp" line="281"/>
+        <location filename="mainwindow.cpp" line="378"/>
+        <location filename="mainwindow.cpp" line="380"/>
+        <location filename="mainwindow.cpp" line="382"/>
         <source>arcsoft_sdk</source>
         <translation type="unfinished">ARCSOFT SDK</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="294"/>
+        <location filename="mainwindow.cpp" line="299"/>
         <source>face_registered</source>
         <translation type="unfinished">人脸注册成功</translation>
     </message>
@@ -163,17 +169,17 @@
         <translation type="obsolete">人脸注册失败</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="373"/>
+        <location filename="mainwindow.cpp" line="378"/>
         <source>please_run_in_admin_mode</source>
         <translation type="unfinished">请重新使用管理员模式启动此程序，当前用户无权限写入激活文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="394"/>
+        <location filename="mainwindow.cpp" line="399"/>
         <source>app_about_content</source>
         <translation type="unfinished">CP人脸识别程序（内嵌ArcSoft SDK）</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="415"/>
+        <location filename="mainwindow.cpp" line="420"/>
         <source>sdk_info2</source>
         <translation type="unfinished">开始日期: %1
 过期日期: %2
@@ -184,7 +190,7 @@ AppId: %6
         </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="419"/>
+        <location filename="mainwindow.cpp" line="424"/>
         <source>menu_about</source>
         <translation type="unfinished">关于</translation>
     </message>
@@ -193,8 +199,8 @@ AppId: %6
         <translation type="obsolete">ARCSOFT激活成功</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="375"/>
-        <location filename="mainwindow.cpp" line="377"/>
+        <location filename="mainwindow.cpp" line="380"/>
+        <location filename="mainwindow.cpp" line="382"/>
         <source>please set valide appid/sdk-key</source>
         <translation type="unfinished">请设置有效ARCOSFT APPID/SDK Key</translation>
     </message>
@@ -205,15 +211,6 @@ AppId: %6
         <location filename="mainwindow.cpp" line="146"/>
         <source>start</source>
         <translation type="unfinished">开始</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="54"/>
-        <location filename="mainwindow.cpp" line="373"/>
-        <location filename="mainwindow.cpp" line="375"/>
-        <location filename="mainwindow.cpp" line="377"/>
-        <source>arcsoft_sdk</source>
-        <oldsource>&amp;arcsoft_sdk</oldsource>
-        <translation type="unfinished">ARCSOFT SDK</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="152"/>

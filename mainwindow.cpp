@@ -277,6 +277,11 @@ void MainWindow::registerFaceImage() {
     qDebug() << "registerFaceImage";
     const QPixmap* pixmap = ui->detectedFaceLabel->pixmap();
     if (pixmap) {
+        if (arcFaceEngine.registeredFaceDataList.size() >= 0) {
+            QMessageBox::warning(this, tr("arcsoft_sdk"), tr("arcsoft_sdk_max_registered_face_exceeded"), QMessageBox::Ok);
+
+            return;
+        }
         bool bRet = false;
         QString placeholder = "";
         QString info = QInputDialog::getText(this, tr("register_face_image_title"), tr("please_input_face_info"), QLineEdit::Normal, placeholder, &bRet);
