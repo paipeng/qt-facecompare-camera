@@ -300,10 +300,15 @@ void MainWindow::registerFaceImage() {
 
 }
 
-void MainWindow::activateArcSoftSDK() {
-    qDebug() << "App path : " << qApp->applicationDirPath();
-    QString path = qApp->applicationDirPath();
+void MainWindow::activateArcSoftSDK() {    
+    QString path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    path.append("/.cp-camera-face");
+    if (!QDir(path).exists()) {
+        QDir().mkdir(path);
+    }
     path.append("/setting.ini");
+    QFile::copy("setting.ini", path);
+
     qDebug() << "setting path: " << path;
     QSettings settings(path, QSettings::IniFormat);
     QString appId = settings.value("x64_free/APPID", "XXXXXXXX").toString(); // settings.value() returns QVariant
@@ -362,9 +367,8 @@ void MainWindow::menuAbout() {
 
 void MainWindow::menuSettings() {
     qDebug() << "menuSettings";
-    qDebug() << "App path : " << qApp->applicationDirPath();
-    QString path = qApp->applicationDirPath();
-    path.append("/setting.ini");
+    QString path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    path.append("/.cp-camera-face/setting.ini");
     qDebug() << "setting path: " << path;
     QSettings settings(path, QSettings::IniFormat);
     QString appId = settings.value("x64_free/APPID", "XXXXXXXX").toString(); // settings.value() returns QVariant
