@@ -306,12 +306,9 @@ void MainWindow::registerFaceImage() {
                 QString info2 = QString::fromLocal8Bit(faceData.info);
                 registeredImageLabeList.at(i)->setInfo(info2);
                 i++;
-
             }
-
         }
     }
-
 }
 
 void MainWindow::clearRegisteredFaces() {
@@ -320,7 +317,6 @@ void MainWindow::clearRegisteredFaces() {
         foreach(FaceData faceData, arcFaceEngine.registeredFaceDataList) {
             free(faceData.faceFeature.feature);
         }
-
         arcFaceEngine.registeredFaceDataList.clear();
     }
     int i = 0;
