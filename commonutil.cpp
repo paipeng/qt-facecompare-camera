@@ -19,6 +19,26 @@ QJsonArray CommonUtil::convertRegisteredImageToJson(QList<FaceData> registeredFa
         QByteArray feature((const char*)faceData.faceFeature.feature, faceData.faceFeature.featureSize);
         json["facefeature"] = QString(feature.toBase64());
         qDebug() << "json: " << json;
+        if (faceData.ageInfo.num > 0) {
+            json["age"] = faceData.ageInfo.ageArray[0];
+        }
+        if (faceData.genderInfo.num > 0) {
+            json["gender"] = faceData.genderInfo.genderArray[0];
+        }
+        if (faceData.angleInfo.num > 0) {
+            json["angle_pitch"] = faceData.angleInfo.pitch[0];
+            json["angle_roll"] = faceData.angleInfo.roll[0];
+            json["angle_status"] = faceData.angleInfo.status[0];
+            json["angle_yaw"] = faceData.angleInfo.yaw[0];
+        }
+        json["faceOrient"] = faceData.faceInfo.faceOrient;
+        json["faceRectLeft"] = faceData.faceInfo.faceRect.left;
+        json["faceRectTop"] = faceData.faceInfo.faceRect.top;
+        json["faceRectRight"] = faceData.faceInfo.faceRect.right;
+        json["faceRectBottom"] = faceData.faceInfo.faceRect.bottom;
+        if (faceData.liveNessInfo.num > 0) {
+            json["liveNessInfo"] = faceData.liveNessInfo.isLive[0];
+        }
         jsonArray.append(json);
     }
     return jsonArray;
