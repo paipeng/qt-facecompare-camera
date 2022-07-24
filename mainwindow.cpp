@@ -316,7 +316,13 @@ void MainWindow::registerFaceImage() {
 
 void MainWindow::clearRegisteredFaces() {
     qDebug() << "clearRegisteredFaces";
-    arcFaceEngine.registeredFaceDataList.clear();
+    if (arcFaceEngine.registeredFaceDataList.size() > 0) {
+        foreach(FaceData faceData, arcFaceEngine.registeredFaceDataList) {
+            free(faceData.faceFeature.feature);
+        }
+
+        arcFaceEngine.registeredFaceDataList.clear();
+    }
     int i = 0;
     QImage green;
     green.load("./images/FacialDetection.png");
