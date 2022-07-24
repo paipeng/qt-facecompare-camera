@@ -11,6 +11,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    commonutil.cpp \
     facelabel.cpp \
     licensedialog.cpp \
     main.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     clickablelabel.cpp
 
 HEADERS += \
+    commonutil.h \
     facelabel.h \
     licensedialog.h \
     mainwindow.h \

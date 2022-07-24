@@ -5,6 +5,8 @@
 #include "cpcamera.h"
 #include "ArcFaceEngine.h"
 #include "facelabel.h"
+#include "commonutil.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -56,5 +58,6 @@ private:
 
     QList<FaceLabel*> registeredImageLabeList;
     FaceData detectedFaceData;
+    CommonUtil commonUtil;
 };
 #endif // MAINWINDOW_H

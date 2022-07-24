@@ -277,7 +277,7 @@ void MainWindow::registerFaceImage() {
     qDebug() << "registerFaceImage";
     const QPixmap* pixmap = ui->detectedFaceLabel->pixmap();
     if (pixmap) {
-        if (arcFaceEngine.registeredFaceDataList.size() >= 0) {
+        if (arcFaceEngine.registeredFaceDataList.size() >= 6) {
             QMessageBox::warning(this, tr("arcsoft_sdk"), tr("arcsoft_sdk_max_registered_face_exceeded"), QMessageBox::Ok);
 
             return;
@@ -457,5 +457,25 @@ void MainWindow::menuLoad() {
 
 void MainWindow::menuSave() {
     qDebug() << "menuSave";
+    QJsonArray jsonArray = commonUtil.convertRegisteredImageToJson(arcFaceEngine.registeredFaceDataList);
 
+    QJsonDocument document;
+    document.setArray(jsonArray);
+    QByteArray bytes = document.toJson( QJsonDocument::Indented );
+
+    QString path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    path.append("/.cp-camera-face");
+    if (!QDir(path).exists()) {
+        QDir().mkdir(path);
+    }
+    path.append("/registeredImages.json");
+
+    QFile file( path );
+    if( file.open( QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate ) )
+    {
+        QTextStream iStream( &file );
+        iStream.setCodec( "utf-8" );
+        iStream << bytes;
+        file.close();
+    }
 }
