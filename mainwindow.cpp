@@ -88,6 +88,7 @@ void MainWindow::initCameras() {
 
 void MainWindow::startCamera() {
     qDebug() << "startCamera";
+    camera.setAutoCapture(true);
     camera.startCamera();
 }
 
