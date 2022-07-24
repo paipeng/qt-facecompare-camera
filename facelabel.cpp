@@ -21,6 +21,6 @@ void FaceLabel::paintEvent(QPaintEvent* event) {
     QFont font = QGuiApplication::font();
     font.setPointSize(10);
     painter.setFont(font);
-    painter.drawText(20,this->height() - 20, info);
+    painter.drawText(20,this->height() - 10, info);
 #endif
 }
