@@ -359,7 +359,9 @@ void MainWindow::activateArcSoftSDK() {
         }
 
         arcFaceEngine.SetLivenessThreshold(0.8f, 0.0f);
-    } else if (faceRes == 28673) {
+    } else if (faceRes == 0x16001) {
+        QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please_run_in_admin_mode"), QMessageBox::Ok);
+    }  else if (faceRes == 28673) {
         QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
     } else {
         QMessageBox::critical(this, tr("arcsoft_sdk"), tr("please set valide appid/sdk-key"), QMessageBox::Ok);
