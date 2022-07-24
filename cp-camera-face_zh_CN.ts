@@ -90,13 +90,13 @@
         <location filename="mainwindow.cpp" line="61"/>
         <location filename="mainwindow.cpp" line="62"/>
         <source>load_registered_face</source>
-        <translation type="unfinished">加载注册人脸数据</translation>
+        <translation type="unfinished">加载数据</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="65"/>
         <location filename="mainwindow.cpp" line="66"/>
         <source>save_registered_face</source>
-        <translation type="unfinished">保存注册人脸数据</translation>
+        <translation type="unfinished">保存数据</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="71"/>
@@ -147,11 +147,17 @@
         <translation type="unfinished">ArcSoft SDK信息：过期日期 %1 版本 %2</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="467"/>
+        <source>no_registered_image</source>
+        <translation type="unfinished">没有注册人脸数据，无法保存</translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="54"/>
         <location filename="mainwindow.cpp" line="281"/>
         <location filename="mainwindow.cpp" line="378"/>
         <location filename="mainwindow.cpp" line="380"/>
         <location filename="mainwindow.cpp" line="382"/>
+        <location filename="mainwindow.cpp" line="467"/>
         <source>arcsoft_sdk</source>
         <translation type="unfinished">ARCSOFT SDK</translation>
     </message>
