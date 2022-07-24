@@ -273,7 +273,8 @@ void MainWindow::registerFaceImage() {
         if (bRet) {
             //QImage image(pixmap->toImage());
             //image.save("detectedFace.jpeg");
-            detectedFaceData.image.save("detectedFaceImage.bmp");
+            detectedFaceData.info = info;
+            //detectedFaceData.image.save("detectedFaceImage.bmp");
             arcFaceEngine.registerFaceData(&detectedFaceData);
             ui->statusbar->showMessage(tr("face_registered"));
             int i = 0;
@@ -282,7 +283,9 @@ void MainWindow::registerFaceImage() {
                 int h = registeredImageLabeList.at(i)->height();
                 QPixmap pixmap = QPixmap::fromImage(faceData.image);
                 registeredImageLabeList.at(i)->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+                registeredImageLabeList.at(i)->setInfo(info);
                 i++;
+
             }
 
         }

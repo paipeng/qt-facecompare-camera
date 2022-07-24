@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "cpcamera.h"
 #include "ArcFaceEngine.h"
-
+#include "facelabel.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -52,7 +52,7 @@ private:
     QElapsedTimer timer;
     QSize previewImageSize;
 
-    QList<QLabel*> registeredImageLabeList;
+    QList<FaceLabel*> registeredImageLabeList;
     FaceData detectedFaceData;
 };
 #endif // MAINWINDOW_H

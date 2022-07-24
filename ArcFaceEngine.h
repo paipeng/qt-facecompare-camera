@@ -31,6 +31,7 @@ typedef struct _FaceData {
     ASF_LivenessInfo liveNessInfo;
     ASF_FaceFeature faceFeature;
     QImage image;
+    QString info;
 } FaceData;
 
 class ArcFaceEngine  : public QThread
