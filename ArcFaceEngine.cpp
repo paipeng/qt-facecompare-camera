@@ -419,6 +419,9 @@ int ArcFaceEngine::faceDetect(const QImage &image, FaceData *faceData) {
             faceData->faceFeature.feature = (MByte *)malloc(faceData->faceFeature.featureSize * sizeof(MByte));
             detectRes = PreExtractFeature(originImage, faceData->faceFeature, faceData->faceInfo);
 
+            memcpy(faceData->info, "Unknown", sizeof(char) * strlen("Unknown"));
+            qDebug() << "faceData info: " << QString::fromLocal8Bit(faceData->info);
+            //faceData->info = QString("Unknown").toStdString().c_str();
             if (MOK == detectRes) {
                 qDebug() << "PreExtractFeature OK " << faceData->faceFeature.featureSize;
             } else {
@@ -463,6 +466,8 @@ void ArcFaceEngine::faceCompare(const QImage& image) {
             }
             if (confidenceLevel > 0.8) {
                 qDebug() << "emit slot -> updateFaceDecodeResult";
+                //faceData.info = registeredFaceData.info;
+                memcpy(faceData.info, registeredFaceData.info, sizeof(char) * 64);
                 break;
             }
         }
@@ -497,7 +502,7 @@ int ArcFaceEngine::registerFaceData(FaceData *faceData) {
         memcpy(registeredFaceData.faceFeature.feature, faceData->faceFeature.feature, sizeof(char) * faceData->faceFeature.featureSize);
         //memcpy(registeredFaceData.ageInfo, faceData->ageInfo, sizeof(ASF_AgeInfo));
         registeredFaceData.image = faceData->image;
-
+        memcpy(registeredFaceData.info, faceData->info, sizeof(char)*64);
         registeredFaceDataList.append(registeredFaceData);
     }
     return 0;
