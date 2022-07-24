@@ -105,6 +105,7 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="334"/>
+        <location filename="mainwindow.cpp" line="378"/>
         <source>format_date</source>
         <translation type="unfinished">yyyy年MM月dd日 hh:mm:ss</translation>
     </message>
@@ -141,7 +142,18 @@
         <translation type="unfinished">CP人脸识别程序（内嵌ArcSoft SDK）</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="371"/>
+        <location filename="mainwindow.cpp" line="380"/>
+        <source>sdk_info2</source>
+        <translation type="unfinished">开始日期: %1
+过期日期: %2
+版本: %3
+类型：%4
+平台: %5
+AppId: %6
+        </translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="384"/>
         <source>menu_about</source>
         <translation type="unfinished">关于</translation>
     </message>

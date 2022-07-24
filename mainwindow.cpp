@@ -368,6 +368,28 @@ void MainWindow::menuAbout() {
     QString content =  tr("app_about_content");
     content.append("\n\nVersion: ");
     content.append(version);
+
+    ASF_ActiveFileInfo activeFileInfo = { 0 };
+    MRESULT afResult = arcFaceEngine.GetActiveFileInfo(activeFileInfo);
+    qDebug() << "GetActiveFileInfo ret: " << afResult;
+    if (afResult == MOK) {
+        content.append("\n\nArcSoft SDK: \n");
+        uint second = atoi(activeFileInfo.endTime);
+        QString endTime = QDateTime::fromTime_t(second).toString(tr("format_date")); //(activeFileInfo.endTime);
+
+        second = atoi(activeFileInfo.startTime);
+        QString startTime = QDateTime::fromTime_t(second).toString(tr("format_date")); //(activeFileInfo.endTime);
+
+        QString sdkVersion(activeFileInfo.sdkVersion);
+
+        QString sdkType(activeFileInfo.sdkType);
+        QString sdkPlatform(activeFileInfo.platform);
+        QString appId(activeFileInfo.appId);
+
+        QString sdkInfo = QString(tr("sdk_info2")).arg(startTime, endTime, sdkVersion, sdkType, sdkPlatform, appId);
+        content.append(sdkInfo);
+    }
+
     QMessageBox::about(this, tr("menu_about"), content);
 
 }
