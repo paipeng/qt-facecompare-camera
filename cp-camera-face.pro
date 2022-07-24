@@ -82,13 +82,14 @@ first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)
 
+QMAKE_EXTRA_TARGETS += first copydata
 
 copyimages.commands = $(COPY_DIR) $$shell_path($$PWD/images) $$shell_path($$OUT_PWD/images)
-first.depends = $(first) copyimages
-export(first.depends)
+last.depends = $(last) copyimages
+export(last.depends)
 export(copyimages.commands)
 
-QMAKE_EXTRA_TARGETS += first copydata copyimages
+QMAKE_EXTRA_TARGETS += last copyimages
 
 
 RC_ICONS = app.ico
