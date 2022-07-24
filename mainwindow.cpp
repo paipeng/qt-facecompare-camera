@@ -305,10 +305,11 @@ void MainWindow::clearRegisteredFaces() {
     QImage green;
     green.load("./images/FacialDetection.png");
     QPixmap pixmap = QPixmap::fromImage(green);
-    foreach(QLabel* registeredImageLabel, registeredImageLabeList) {
+    foreach(FaceLabel* registeredImageLabel, registeredImageLabeList) {
         int w = registeredImageLabeList.at(i)->width();
         int h = registeredImageLabeList.at(i)->height();
         registeredImageLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+        registeredImageLabel->setInfo("");
         i++;
     }
 }
