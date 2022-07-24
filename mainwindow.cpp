@@ -315,6 +315,7 @@ void MainWindow::registerFaceImage() {
 }
 
 void MainWindow::clearRegisteredFaces() {
+    qDebug() << "clearRegisteredFaces";
     arcFaceEngine.registeredFaceDataList.clear();
     int i = 0;
     QImage green;
@@ -453,29 +454,36 @@ void MainWindow::menuSettings() {
 
 void MainWindow::menuLoad() {
     qDebug() << "menuLoad";
+
+    QJsonArray jsonArray = commonUtil.readJson("registeredImages.json");
+    qDebug() << "jsonArray: " << jsonArray.size();
+    if (jsonArray.size() > 0) {
+        if (arcFaceEngine.registeredFaceDataList.size() > 0) {
+            clearRegisteredFaces();
+        }
+        arcFaceEngine.registeredFaceDataList = commonUtil.loadRegisteredImage(jsonArray);
+        qDebug() << "arcFaceEngine.registeredFaceDataList size: " << arcFaceEngine.registeredFaceDataList.size();
+        int i = 0;
+        foreach(FaceData faceData, arcFaceEngine.registeredFaceDataList) {
+            int w = registeredImageLabeList.at(i)->width();
+            int h = registeredImageLabeList.at(i)->height();
+            QPixmap pixmap = QPixmap::fromImage(faceData.image);
+            registeredImageLabeList.at(i)->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+            QString info2 = QString::fromLocal8Bit(faceData.info);
+            registeredImageLabeList.at(i)->setInfo(info2);
+            i++;
+
+        }
+    }
 }
 
 void MainWindow::menuSave() {
     qDebug() << "menuSave";
-    QJsonArray jsonArray = commonUtil.convertRegisteredImageToJson(arcFaceEngine.registeredFaceDataList);
+    if (arcFaceEngine.registeredFaceDataList.length() > 0) {
+        QJsonArray jsonArray = commonUtil.convertRegisteredImageToJson(arcFaceEngine.registeredFaceDataList);
+        commonUtil.writeJson("registeredImages.json", jsonArray);
+    } else {
+        QMessageBox::warning(this, tr("arcsoft_sdk"), tr("no_registered_image"), QMessageBox::Ok);
 
-    QJsonDocument document;
-    document.setArray(jsonArray);
-    QByteArray bytes = document.toJson( QJsonDocument::Indented );
-
-    QString path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-    path.append("/.cp-camera-face");
-    if (!QDir(path).exists()) {
-        QDir().mkdir(path);
-    }
-    path.append("/registeredImages.json");
-
-    QFile file( path );
-    if( file.open( QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate ) )
-    {
-        QTextStream iStream( &file );
-        iStream.setCodec( "utf-8" );
-        iStream << bytes;
-        file.close();
     }
 }
