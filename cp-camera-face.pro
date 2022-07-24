@@ -81,7 +81,15 @@ copydata.commands = $(COPY_DIR) $$shell_path($$PWD/setting.ini) $$shell_path($$O
 first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)
-QMAKE_EXTRA_TARGETS += first copydata
+
+
+copyimages.commands = $(COPY_DIR) $$shell_path($$PWD/images) $$shell_path($$OUT_PWD/images)
+first.depends = $(first) copyimages
+export(first.depends)
+export(copyimages.commands)
+
+QMAKE_EXTRA_TARGETS += first copydata copyimages
+
 
 RC_ICONS = app.ico
 
