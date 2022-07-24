@@ -27,6 +27,7 @@ private slots:
 
     void registeredFaceLabelClicked();
     void registerFaceImage();
+    void clearRegisteredFaces();
 
     // menu
     void menuExit();

@@ -138,13 +138,13 @@
            <property name="minimumSize">
             <size>
              <width>200</width>
-             <height>240</height>
+             <height>220</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>200</width>
-             <height>240</height>
+             <height>220</height>
             </size>
            </property>
            <property name="text">
@@ -162,6 +162,13 @@
           <widget class="QPushButton" name="registerPushButton">
            <property name="text">
             <string>register</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clearPushButton">
+           <property name="text">
+            <string>clear</string>
            </property>
           </widget>
          </item>
@@ -379,10 +386,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>clearPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearRegisteredFaces()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>697</x>
+     <y>377</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>startCamera()</slot>
   <slot>cameraChanged(int)</slot>
   <slot>registerFaceImage()</slot>
+  <slot>clearRegisteredFaces()</slot>
  </slots>
 </ui>

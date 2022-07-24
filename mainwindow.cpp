@@ -300,6 +300,20 @@ void MainWindow::registerFaceImage() {
 
 }
 
+void MainWindow::clearRegisteredFaces() {
+    arcFaceEngine.registeredFaceDataList.clear();
+    int i = 0;
+    QImage green;
+    green.load("./images/FacialDetection.png");
+    QPixmap pixmap = QPixmap::fromImage(green);
+    foreach(QLabel* registeredImageLabel, registeredImageLabeList) {
+        int w = registeredImageLabeList.at(i)->width();
+        int h = registeredImageLabeList.at(i)->height();
+        registeredImageLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+        i++;
+    }
+}
+
 void MainWindow::activateArcSoftSDK() {    
     QString path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
     path.append("/.cp-camera-face");
