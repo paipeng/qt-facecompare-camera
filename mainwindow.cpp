@@ -50,12 +50,22 @@ void MainWindow::initMenu() {
     connect(exitAct, &QAction::triggered, this, &MainWindow::menuExit);
     fileMenu->addAction(exitAct);
 
-    QMenu* preferencesMenu = menuBar()->addMenu(tr("&Preferences"));
+    //QMenu* preferencesMenu = menuBar()->addMenu(tr("&Preferences"));
+    QMenu* arcsoftSdkMenu = menuBar()->addMenu(tr("arcsoft_sdk"));
     QAction *settingAct = new QAction(tr("&Settings"), this);
     settingAct->setShortcuts(QKeySequence::Preferences);
     settingAct->setStatusTip(tr("settings"));
     connect(settingAct, &QAction::triggered, this, &MainWindow::menuSettings);
-    preferencesMenu->addAction(settingAct);
+    arcsoftSdkMenu->addAction(settingAct);
+    arcsoftSdkMenu->addSeparator();
+    QAction *loadAct = new QAction(tr("load_registered_face"), this);
+    loadAct->setStatusTip(tr("load_registered_face"));
+    connect(loadAct, &QAction::triggered, this, &MainWindow::menuLoad);
+    arcsoftSdkMenu->addAction(loadAct);
+    QAction *saveAct = new QAction(tr("save_registered_face"), this);
+    saveAct->setStatusTip(tr("save_registered_face"));
+    connect(saveAct, &QAction::triggered, this, &MainWindow::menuSave);
+    arcsoftSdkMenu->addAction(saveAct);
 
 
     QMenu* helpMenu = menuBar()->addMenu(tr("&Help"));
@@ -434,4 +444,13 @@ void MainWindow::menuSettings() {
 
         activateArcSoftSDK();
     }
+}
+
+void MainWindow::menuLoad() {
+    qDebug() << "menuLoad";
+}
+
+void MainWindow::menuSave() {
+    qDebug() << "menuSave";
+
 }

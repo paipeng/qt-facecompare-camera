@@ -34,6 +34,8 @@ private slots:
     void menuHelp();
     void menuAbout();
     void menuSettings();
+    void menuLoad();
+    void menuSave();
 
 private:
     void cameraState(int cameraId, int state) override;
